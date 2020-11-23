@@ -5,7 +5,7 @@ Class News {
     protected $titre;
     protected $description;
 
-    function __construct(int $heure, string $site,string $titre, int $description) {
+    function __construct(string $heure, string $site,string $titre, string $description) {
         $this->heure=$heure;
         $this->site=$site;
         $this->titre=$titre;
