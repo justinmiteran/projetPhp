@@ -14,7 +14,7 @@ Class News {
 
     function __tostring()
     {
-        return "$this->heure : $this->titre, $this->description par $this->description";
+        return "$this->heure : $this->titre, $this->description par $this->site";
     }
 
     function get_heure(): int {return $this->heure;}
