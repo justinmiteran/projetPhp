@@ -1,14 +1,19 @@
 <html>
 	<head>
-		<title>News Page <?php echo("$pageCourante")?> </title>
+		<title>News Page <?=$pageCourante?> </title>
 	</head>
 	<body>
+
 <?php
 foreach($Tnews as $news){
 ?>
+
 	<div>
-		<p><?php echo $news->get_heure() ?></p>
-		<a href="<?php echo $news->get_titre() ?>"><?php echo $news->get_titre() ?></a>
+		<p><?=$news->get_heure()?></p>
+		<a href="<?=$news->get_titre()?>"><?=$news->get_titre()?></a>
+		<p><?=$news->get_description()?></p>
+		<p><?=$news->get_site()?></p>
+		<p>-------------------------------------------</p>
 	</div>
 
 <?php

@@ -18,7 +18,7 @@ Class News {
     }
 
     function get_heure() {return $this->heure;}
-    function get_site(): string {return $this->site;}
-    function get_titre(): string {return $this->titre;}
-    function get_description(): int {return $this->description;}
+    function get_site() {return $this->site;}
+    function get_titre() {return $this->titre;}
+    function get_description() {return $this->description;}
 }
