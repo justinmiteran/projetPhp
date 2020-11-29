@@ -1,9 +1,5 @@
 <?php
 
-// liste des modules � inclure
-
-$dConfig['includes']=array('Validation.php');
-
 //BD
 
 $base="mysql:host=localhost;dbname=projetphp";
@@ -11,8 +7,8 @@ $login="root";
 $mdp="";
 
 //Vues
-$vues['erreur']=array('url'=>'erreur.php');
-$vues['vnews']=array('url'=>'vnews.php');
+$vues['erreur']='../vues/erreur.php';
+$vues['vNews']='../vues/vNews.php';
 
 //Controllers
-$cont['contuser']=array('url'=>'Controleur.php');
+$cont['controleur']='../controleur/Controleur.php';

@@ -20,5 +20,6 @@ if(isset($_GET['page'])) $pageCourante = $val->valPage($_GET['page'],$pageMax);
 // sinon définir la page courante a 1
 else $pageCourante=1;
 
-// appeler la vue
-require("../vues/vNews.php");
+if(($TErreur = $val->getErreur())) require($vues['erreur']);
+// appeler la vue des News
+else require($vues['vNews']);
