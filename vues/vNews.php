@@ -1,8 +1,19 @@
+<html>
+	<head>
+		<title>News Page <?php echo("$pageCourante")?> </title>
+	</head>
+	<body>
 <?php
-
 foreach($Tnews as $news){
-    echo("$news<br>");
+?>
+	<div>
+		<p><?php echo $news->get_heure() ?></p>
+		<a href="<?php echo $news->get_titre() ?>"><?php echo $news->get_titre() ?></a>
+	</div>
+
+<?php
 }
+
 
 // si la page courante est superieur a la page 1
 if($pageCourante > 1){
@@ -19,3 +30,6 @@ if($pageCourante < $pageMax){
 	echo('<a href="../controleur/Controleur.php?&page='.($pageCourante+1).'">&#62;&#62;</a>');
 	echo(' <a href="../controleur/Controleur.php?&page='.($pageMax).'">'.$pageMax.'</a>');
 }
+?>
+	</body>
+</html>

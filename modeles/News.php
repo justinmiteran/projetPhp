@@ -17,7 +17,7 @@ Class News {
         return "$this->heure : $this->titre, $this->description par $this->site";
     }
 
-    function get_heure(): int {return $this->heure;}
+    function get_heure() {return $this->heure;}
     function get_site(): string {return $this->site;}
     function get_titre(): string {return $this->titre;}
     function get_description(): int {return $this->description;}
