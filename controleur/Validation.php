@@ -16,4 +16,12 @@ class Validation
 		// la page est valide retourner le numeros de page
 		return $numPage;
 	}
+
+	public function ValIdNews($idNews){
+		//validation
+	}
+
+	public function ValNews($news){
+		//validation
+	}
 }

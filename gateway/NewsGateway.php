@@ -64,7 +64,14 @@ class NewsGateway{
     // fonction de suppréssion de news dans la BDD
     public function sup($id){
         // Pour une news donnée grâce à $id on la supprime via une requète SQL
-        $this->con->executeQuery('DELETE from TNews where idNews=:id',array());
+        $this->con->executeQuery('DELETE from TNews where idNews=:id',array(':id'=>array($id, PDO::PARAM_INT)));
+    }
+
+    public function add($news){
+        // on prépare la commande sql d'insertion de news
+        $query = 'INSERT into Tnews (heure,site,nom,description) values(:date,:site,:nom,:description);';
+        // on insert les variables dedans
+        $this->con->executeQuery($query,array(':date'=>array($news->get_heure(), PDO::PARAM_INT),':site'=>array($news->get_site(), PDO::PARAM_INT),':nom'=>array($news->get_titre(), PDO::PARAM_INT),':description'=>array($news->get_description(), PDO::PARAM_INT)));
     }
 }
 ?>
