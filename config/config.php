@@ -7,8 +7,8 @@ $login="root";
 $mdp="";
 
 //Vues
-$vues['erreur']='../vues/erreur.php';
-$vues['vNews']='../vues/vNews.php';
+$vues['erreur']='vues/erreur.php';
+$vues['vNews']='vues/vNews.php';
 
 //Controllers
-$cont['controleur']='../controleur/Controleur.php';
+$cont['controleurUser']='controleur/ControleurUser.php';

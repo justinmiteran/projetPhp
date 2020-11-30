@@ -11,7 +11,7 @@ Class News {
         $this->titre=$titre;
         $this->description=$description;
     }
-
+    
     function __tostring()
     {
         return "$this->heure : $this->titre, $this->description par $this->site";

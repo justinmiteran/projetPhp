@@ -1,8 +1,6 @@
 <?php
+
 // Gateway des News
-require_once("../modeles/News.php");
-
-
 class NewsGateway{
     // $con -> connexion et $tNews ->  tableau des news 
     private $con;
@@ -10,8 +8,9 @@ class NewsGateway{
     
     
     // Constructeur de la gateway
-    public function __Construct($con){
-        $this->con=$con;
+    public function __Construct(){
+        global $base,$login,$mdp;
+        $this->con=new Connection($base,$login,$mdp);
         $this->tNews = [];
     }
     
