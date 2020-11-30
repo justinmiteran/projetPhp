@@ -1,3 +1,4 @@
+<!-- en tête page html -->
 <html>
 	<head>
 		<title>News Page <?=$pageCourante?> </title>
@@ -5,9 +6,10 @@
 	<body>
 
 <?php
+// boucle for pour afficher les news
 foreach($Tnews as $news){
 ?>
-
+	<!-- affichage d'une news -->
 	<div>
 		<p><?=$news->get_heure()?></p>
 		<a href="<?=$news->get_titre()?>"><?=$news->get_titre()?></a>
