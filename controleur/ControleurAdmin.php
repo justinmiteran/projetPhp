@@ -27,7 +27,7 @@ class ControleurAdmin{
                 case "ajouterNews":
                     $this->ajouterNews();
                     break;
-                case "validerAjoutNews"
+                case "validerAjoutNews":
                     $this->validerAjoutNews();
                     $this->afficherNews();
                     break;

@@ -23,7 +23,7 @@ class RSSGateway{
         
         // Pour toutes les valeurs de $resultat on instancie les news dans le tableau $tNews
         foreach ($resultats as $donnee){
-            $this->tRSS[] = $donnee["url"];
+            $this->tRSS[] = new RSS($donnee['nom'],$donnee['url']);
         }
         // On retourne le tableau
         return $this->tRSS;
@@ -37,8 +37,8 @@ class RSSGateway{
     
     public function ajouterRSS($rss){
         // on prépare la commande sql d'insertion de news
-        $query = 'INSERT into TRSS (url) values(:url);';
+        $query = 'INSERT into TRSS (nom,url) values(:nom,:url);';
         // on insert les variables dedans
-        $this->con->executeQuery($query,array(':url'=>array($rss, PDO::PARAM_INT)));
+        $this->con->executeQuery($query,array(':nom'=>array($rss->get_nom(), PDO::PARAM_INT),':url'=>array($rss->get_url(), PDO::PARAM_INT)));
     }
 }
