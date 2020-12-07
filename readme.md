@@ -7,3 +7,7 @@ CREATE TABLE \`projetphp\`.\`tnews\` (
   \`nom\` VARCHAR(100) NULL,  
   \`description\` VARCHAR(500) NULL,  
   PRIMARY KEY (\`idNews\`));  
+CREATE TABLE \`projetphp\`.\`trss\` (  
+  \`idTRSS\` INT NOT NULL AUTO_INCREMENT,  
+  \`url\` VARCHAR(500) NULL,  
+  PRIMARY KEY (\`idTRSS\`));  
