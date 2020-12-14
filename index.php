@@ -7,6 +7,6 @@ require_once(__DIR__.'/config/Autoload.php');
 Autoload::charger();
 
 //si controller pas objet
-$cnt = new ControleurUser();
+$cont = new FrontControlleur();
 
 ?>

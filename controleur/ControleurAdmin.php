@@ -31,6 +31,10 @@ class ControleurAdmin{
                     $this->validerAjoutNews();
                     $this->afficherNews();
                     break;
+                case "deconnexion":
+                    $this->deconnexion();
+                    $this->afficherPageDeconnexion();
+                    break;
 				//sinon
                 default:
                     // ajout d'une erreur
@@ -95,5 +99,14 @@ class ControleurAdmin{
         $val = new Validation();
         $news=$val->ValNews($_POST);
         $admin->ajouterNews(new News($_POST['heure'],$_POST['site'],$_POST['titre'],$_POST['description']));
+    }
+
+    function deconnexion(){
+        $admin = new ModeleAdmin();
+        $admin->deconnexion();
+    }
+
+    function afficherPageDeconnexion(){
+        require($vues['vDeconnete']);
     }
 }

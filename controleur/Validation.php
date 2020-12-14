@@ -24,4 +24,11 @@ class Validation
 	public function ValNews($news){
 		//validation
 	}
+
+	public static function string($string){
+		if ($string=="") {
+            throw new Exception("La chaîne de caractère ne peut être vide");
+		}
+		return filter_var($string, FILTER_SANITIZE_STRING);
+	}
 }

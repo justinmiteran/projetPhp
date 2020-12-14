@@ -2,15 +2,15 @@
     <head>
         <meta charset="utf-8">
         <title>Connexion</title>
-        <link rel="stylesheet" href="css/bootstrap.min.css" media="screen" type="text/css" />
-        <link rel="stylesheet" href="css/styleConnexion.css" media="screen" type="text/css" />
+        <link rel="stylesheet" href="vues/css/bootstrap.min.css" media="screen" type="text/css" />
+        <link rel="stylesheet" href="vues/css/styleConnexion.css" media="screen" type="text/css" />
     </head>
     <body>
         <div class="container-fluid ban">
             <div class="row">
                 <article class="col-md-1">
-                    <a href="connexion.html">
-                        <img src="img/logo.png" class="img">
+                    <a href="index.php">
+                        <img src="vues/img/logo.png" class="img">
                     </a>
                 </article>
             </div>
@@ -22,12 +22,12 @@
             <div class="container">
                 <div class="row">
                     <article class="col-md-12">
-                        <form action='truc.php' method='post'>
+                        <form action='index.php?action=connexion' method='post'>
                             <div class="cont"><h1>Connexion</h1></div>
                             <label><b>Login : </b></label>
-                            <input type="text" placeholder="Login :" name="username" required>
+                            <input type="text" placeholder="Login :" name="login" required>
                             <label><b>passeword : </b></label>
-                            <input type="password" placeholder="passeword :" name="username" required>
+                            <input type="password" placeholder="passeword :" name="mdp" required>
                             <div class="cont"><input type="submit" id='submit' value='Valider'></div>              
                         </form>
                     </article>

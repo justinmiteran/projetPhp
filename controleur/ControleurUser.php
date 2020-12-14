@@ -21,7 +21,12 @@ class ControleurUser{
                     //affiche la page de news
 					$this->afficherNews();
                     break;
-                    
+                case "formulaireConnexion":
+                    $this->afficherConnexion();
+                    break;
+                case "connexion":
+                    $this->connexion();
+                    break;
 				//sinon
                 default:
                     // ajout d'une erreur
@@ -31,16 +36,14 @@ class ControleurUser{
 			        break;
 		    }
         }
-        catch (PDOException $e)
-        {
+        catch (PDOException $e){
 		    // si erreur dans la BDD ajout d'une erreur
             $TErreur[] = $e->getMessage();
             // appel de la vue d'erreur
 		    require ($vues['erreur']);
 		
 	    }
-	    catch (Exception $e2)
-	    {
+	    catch (Exception $e2){
             // ajout d'une erreur
             $TErreur[] = $e2->getMessage();
             // appel de la vue d'erreur
@@ -68,5 +71,32 @@ class ControleurUser{
         $Tnews=$news->getNewsPage($pageCourante,$this->nbNewsPage);
         // appeler la vue des News
         require($vues['vNews']);
+    }
+
+    function afficherConnexion(){
+        global $vues;
+        // appeler la vue des News
+        $admin = new ModeleAdmin();
+        if($admin->isAdmin()==null){
+            require($vues['vConnexion']);
+        }
+        else $this->afficherNews();
+    }
+
+    function connexion(){
+        global $vues;
+        // appeler la vue des News
+        $admin = new ModeleAdmin();
+        if(!isset($_POST['login']) || !isset($_POST['mdp'])){
+            $this->afficherConnexion();
+            return;
+        }
+        $login=validation::string($_POST['login']);
+        $mdp=validation::string($_POST['mdp']);
+        $reussi = $admin->connexion($login,$mdp);
+        if($reussi){
+            $this->afficherNews();
+        }
+        else require($vues['vConnexion']);
     }
 }
