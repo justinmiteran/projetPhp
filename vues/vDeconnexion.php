@@ -27,7 +27,7 @@
                             echo("<div class=\"cont\"><h2 class='nom'>$nom</h2></div>");
                         ?>
                         <div class="cont">
-                            <img src="vues/img/bey.jpg">
+                            <img src="vues/img/bey.png">
                         </div>
                         <div class="cont"><button onclick="window.location.href = 'index.php';">Retour au site</button></div>
                     </article>
