@@ -14,7 +14,7 @@ class FrontControlleur{
             $admin = $modeleAdmin->isAdmin(); 
             if(isset($_REQUEST['action'])){
                 $action=$_REQUEST['action'];
-                Validation::string($action);
+                $action = Validation::string($action);
             }
             else {
                 $action=null;

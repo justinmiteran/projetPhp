@@ -30,8 +30,8 @@ Class ModeleAdmin {
     }
     
     function connexion($login, $mdp){
-        Validation::string($login);
-        Validation::string($mdp);
+        $login = Validation::string($login);
+        $mdp = Validation::string($mdp);
         
         $gate = new AdminGateway();
         $hashMdp =$gate->getMdp($login);

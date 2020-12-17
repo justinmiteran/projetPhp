@@ -4,8 +4,11 @@
 		<title>News Page <?=$pageCourante?> </title>
 	</head>
 	<body>
-
 <?php
+if(isset($con) && $con == false){
+	echo('<a href="index.php?action=formulaireConnexion">connexion</a>');
+}
+else echo('<a href="index.php?action=deconnexion">deconnexion</a>');
 // boucle for pour afficher les news
 foreach($Tnews as $news){
 ?>

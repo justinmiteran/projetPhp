@@ -4,6 +4,7 @@ class ControleurAdmin{
     
     //variable du nombre de news par page
 
+
     function __construct() {		
         global $vues;
 		//on initialise un tableau d'erreur
@@ -80,6 +81,12 @@ class ControleurAdmin{
         // récupération d'un tableau de news
         $Tnews=$news->getNewsPage($pageCourante,$this->nbNewsPage);
         // appeler la vue des News
+        
+        $admin = new ModeleAdmin();
+        if($admin->isAdmin()==null){
+            $con = False;
+        }
+        else $con = True;
         require($vues['vNews']);
     }
 
