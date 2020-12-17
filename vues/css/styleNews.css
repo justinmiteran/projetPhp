@@ -1,0 +1,44 @@
+.blanco{
+    background-color: white;
+}
+
+.ban{
+    background-color: white;
+    height: 80px;
+}
+
+.ecart{
+    height: 20px;
+}
+
+.img{
+    height: 80px;
+}
+
+.cont{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.droit{
+    align-items: right;
+}
+
+.bord{
+    border:1px dotted black;
+}
+
+body{
+    background: #E5861B
+}
+
+button{
+    background-color: white;
+    color: black;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 20%;
+}

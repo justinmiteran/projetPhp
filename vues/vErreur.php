@@ -2,7 +2,7 @@
     <head>
         <meta charset="utf-8">
         <title>Erreur</title>
-        <link rel="stylesheet" href="vues/css/bootstrap.min.css" media="screen" type="text/css" />
+        <link rel="stylesheet" href="vues/css/bootstrap.css" media="screen" type="text/css" />
         <link rel="stylesheet" href="vues/css/styleErreur.css" media="screen" type="text/css" />
     </head>
     <body>

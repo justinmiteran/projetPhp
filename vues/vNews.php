@@ -2,13 +2,32 @@
 <html>
 	<head>
 		<title>News Page <?=$pageCourante?> </title>
+		<link rel="stylesheet" href="vues/css/bootstrap.css" media="screen" type="text/css" />
+		<link rel="stylesheet" href="vues/css/styleNews.css" media="screen" type="text/css" />
 	</head>
 	<body>
+		<div class="container-fluid ban">
+			<div class="d-flex justify-content-between">
+				<div class="p-0">
+					<a href="index.php">
+                        <img src="vues/img/logo.png" class="img">
+                    </a>
+				</div>
+				<div class="p-0">
+					<?php
+						if(isset($con) && $con == false){
+							echo('<button onclick="window.location.href = \'index.php?action=formulaireConnexion\';">Connexion</button>');
+						} else {
+							echo('<button onclick="window.location.href = \'index.php?action=deconnexion\';">Deconnexion</button>');
+						}
+					?>
+				</div>
+			</div>
+		</div>
+		<div class="container-fluid ecart">  
+
+        </div>
 <?php
-if(isset($con) && $con == false){
-	echo('<a href="index.php?action=formulaireConnexion">connexion</a>');
-}
-else echo('<a href="index.php?action=deconnexion">deconnexion</a>');
 // boucle for pour afficher les news
 foreach($Tnews as $news){
 ?>
