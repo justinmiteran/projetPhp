@@ -1,0 +1,60 @@
+.blanco{
+    background-color: white;
+}
+
+.ban{
+    background-color: white;
+    height: 80px;
+}
+
+.ecart{
+    height: 20px;
+}
+
+.img{
+    height: 80px;
+}
+
+.cont{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+body{
+    background: #E5861B
+}
+
+#container{
+    width:400px;
+    margin:0 auto;
+    margin-top:10%;
+}
+/* Bordered form */
+
+#container h1{
+    width: 40%;
+    margin: 0 auto;
+    padding-bottom: 10px;
+}
+
+button{
+    background-color: #E5861B;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 20%;
+}
+
+button:hover{
+    background-color: white;
+    color: #53af57;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: 5px solid #53af57;
+    cursor: pointer;
+    width: 20%;
+}

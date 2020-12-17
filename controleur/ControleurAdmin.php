@@ -3,7 +3,7 @@
 class ControleurAdmin{
     
     //variable du nombre de news par page
-
+    
 
     function __construct() {		
         global $vues;
@@ -34,7 +34,6 @@ class ControleurAdmin{
                     break;
                 case "deconnexion":
                     $this->deconnexion();
-                    $this->afficherPageDeconnexion();
                     break;
 				//sinon
                 default:
@@ -64,6 +63,7 @@ class ControleurAdmin{
 
     // function d'affiche de news par pages
     function afficherNews(){
+        global $vues;
         // déclaration variables globales
         global $vues,$cont;
         // déclaration constructeurs 
@@ -98,6 +98,7 @@ class ControleurAdmin{
     }
 
     function ajouterNews(){
+        global $vues;
         require($vues['vAjoutNews']);
     }
 
@@ -110,10 +111,16 @@ class ControleurAdmin{
 
     function deconnexion(){
         $admin = new ModeleAdmin();
+        $nom = "";
+        if(($a=$admin->isAdmin())!=null){
+            $nom = $a->get_nom();
+        }
         $admin->deconnexion();
+        $this->afficherPageDeconnexion($nom);
     }
 
-    function afficherPageDeconnexion(){
-        require($vues['vDeconnete']);
+    function afficherPageDeconnexion($nom){
+        global $vues;
+        require($vues['vDeconnexion']);
     }
 }

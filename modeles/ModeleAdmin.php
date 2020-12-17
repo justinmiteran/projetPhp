@@ -23,7 +23,7 @@ Class ModeleAdmin {
     function isAdmin(){
         if(isset($_SESSION['role']) && isset($_SESSION['login'])){
             if(Validation::string($_SESSION['role'])=='admin'){
-                return new Admin(Validation::string($_SESSION['role']));
+                return new Admin(Validation::string($_SESSION['login']));
             }
         }
         return null;
@@ -52,6 +52,5 @@ Class ModeleAdmin {
         session_destroy();
         $_SESSION = array();
     }
-    
     
 }
