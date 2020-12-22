@@ -42,7 +42,7 @@ class NewsGateway{
         
         // Pour chaques résultats on instancie la news dans tNews
         foreach ($resultats as $donnee){
-            $this->tNews[] = new News($donnee["heure"], $donnee["site"], $donnee["nom"], $donnee["description"]);
+            $this->tNews[] = new News($donnee["idNews"],$donnee["heure"], $donnee["site"], $donnee["nom"], $donnee["description"]);
         }
         // Et on retourne tNews
         return $this->tNews;

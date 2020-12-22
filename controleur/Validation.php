@@ -17,8 +17,11 @@ class Validation
 		return $numPage;
 	}
 
-	public function ValIdNews($idNews){
-		//validation
+	public function ValId($idNews){
+		if (!filter_var($idNews, FILTER_VALIDATE_INT)) throw new Exception("L'identifiant \"$idNews\" est invalide, risque de sécurité");
+		if($idNews<0) throw new Exception("L'identifiant \"$idNews\" est inférieure à 0 ");
+		return $idNews;
+
 	}
 
 	public function ValNews($news){
@@ -27,7 +30,7 @@ class Validation
 
 	public static function string($string){
 		if ($string=="") {
-            throw new Exception("La chaîne de caractère ne peut être vide");
+            throw new Exception("La chaîne de caractère \"$string\" ne peut être vide");
 		}
 		return filter_var($string, FILTER_SANITIZE_STRING);
 	}

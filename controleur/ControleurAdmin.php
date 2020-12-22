@@ -93,7 +93,7 @@ class ControleurAdmin{
     function supprimerNews(){
         $admin = new ModeleAdmin();
         $val = new Validation();
-        $idNews=$val->ValIdNews($_POST);
+        $idNews=$val->ValId($_GET['SupNews']);
         $admin->supprimerNews($idNews);
     }
 
@@ -106,7 +106,7 @@ class ControleurAdmin{
         $admin = new ModeleAdmin();
         $val = new Validation();
         $news=$val->ValNews($_POST);
-        $admin->ajouterNews(new News($_POST['heure'],$_POST['site'],$_POST['titre'],$_POST['description']));
+        $admin->ajouterNews(new News(0,$_POST['heure'],$_POST['site'],$_POST['titre'],$_POST['description']));
     }
 
     function deconnexion(){
