@@ -33,7 +33,7 @@ foreach($Tnews as $news){
 ?>
 	<!-- affichage d'une news -->
 	<div>
-		<p><?=$news->get_heure()?></p>
+		<p><?=$news->get_heure()->format("D d M Y -- H:i")?></p>
 		<a href="<?=$news->get_titre()?>"><?=$news->get_titre()?></a>
 		<p><?=$news->get_description()?></p>
 		<p><?=$news->get_site()?></p>

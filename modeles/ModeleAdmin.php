@@ -9,6 +9,8 @@ Class ModeleAdmin {
         // initialisation de la class NewsGateway et de la classe Validation
         $gate = new NewsGateway();       
         // récupération des news
+        var_dump($gate->findNewsbyId($idNews));
+        if($gate->findNewsbyId($idNews)==0) throw new Exception("L'article à supprimer n'éxiste pas");
         return $gate->sup($idNews);
     }
     

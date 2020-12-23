@@ -3,7 +3,8 @@
 class ControleurAdmin{
     
     //variable du nombre de news par page
-    
+    protected $nbNewsPage = 2;
+    protected $tErreur = array ();
 
     function __construct() {		
         global $vues;
@@ -63,7 +64,6 @@ class ControleurAdmin{
 
     // function d'affiche de news par pages
     function afficherNews(){
-        global $vues;
         // déclaration variables globales
         global $vues,$cont;
         // déclaration constructeurs 
@@ -81,12 +81,13 @@ class ControleurAdmin{
         // récupération d'un tableau de news
         $Tnews=$news->getNewsPage($pageCourante,$this->nbNewsPage);
         // appeler la vue des News
-        
+
         $admin = new ModeleAdmin();
         if($admin->isAdmin()==null){
             $con = False;
         }
         else $con = True;
+        
         require($vues['vNews']);
     }
 
@@ -104,9 +105,8 @@ class ControleurAdmin{
 
     function validerAjoutNews(){
         $admin = new ModeleAdmin();
-        $val = new Validation();
-        $news=$val->ValNews($_POST);
-        $admin->ajouterNews(new News(0,$_POST['heure'],$_POST['site'],$_POST['titre'],$_POST['description']));
+        $news=VALIDATION::ValNews(new News(0,$_POST['heure'],$_POST['site'],$_POST['titre'],$_POST['description'],$_POST['categorie'],$_POST['image']));
+        $admin->ajouterNews($news);
     }
 
     function deconnexion(){

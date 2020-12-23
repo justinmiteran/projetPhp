@@ -1,10 +1,8 @@
 <?php
 class Validation
 {
-    private $erreur;
-
 	//validation et corection du numeros de page
-	public function valPage($numPage, $nbPages){
+	public static function valPage($numPage, $nbPages){
 		// si le numero de page n'est pas un nombre retourner la page 1
 		if(!is_numeric($numPage)) throw new Exception("numero de page \"$numPage\" incorecte");
 		// arrondie le numero de page a la valeur inferieur
@@ -17,15 +15,18 @@ class Validation
 		return $numPage;
 	}
 
-	public function ValId($idNews){
-		if (!filter_var($idNews, FILTER_VALIDATE_INT)) throw new Exception("L'identifiant \"$idNews\" est invalide, risque de sécurité");
-		if($idNews<0) throw new Exception("L'identifiant \"$idNews\" est inférieure à 0 ");
+	public static function ValId($idNews){
+		if(!isset($idNews)) throw new Exception("L'identifiant de l'article à supprimer n'est pas spécifié");
+		if (!filter_var($idNews, FILTER_VALIDATE_INT)) throw new Exception("L'identifiant \"$idNews\" de l'article à supprimer est invalide, risque de sécurité");
+		if($idNews<0) throw new Exception("L'identifiant \"$idNews\" de l'article à supprimer est inférieure à 0 ");
 		return $idNews;
 
 	}
 
-	public function ValNews($news){
-		//validation
+	public static function ValNews($news){
+		$news->get_heure();
+
+		$news->get_site();
 	}
 
 	public static function string($string){

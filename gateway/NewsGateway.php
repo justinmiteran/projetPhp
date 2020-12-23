@@ -24,7 +24,7 @@ class NewsGateway{
         
         // Pour toutes les valeurs de $resultat on instancie les news dans le tableau $tNews
         foreach ($resultats as $donnee){
-            $this->tNews[] = new News($donnee["heure"], $donnee["site"], $donnee["nom"], $donnee["description"]);
+            $this->tNews[] = new News($donnee["idNews"],new DateTime($donnee["heure"]), $donnee["site"], $donnee["nom"], $donnee["description"],$donnee["categorie"],$donnee["image"]);
         }
         // On retourne le tableau
         return $this->tNews;
@@ -42,7 +42,7 @@ class NewsGateway{
         
         // Pour chaques résultats on instancie la news dans tNews
         foreach ($resultats as $donnee){
-            $this->tNews[] = new News($donnee["idNews"],$donnee["heure"], $donnee["site"], $donnee["nom"], $donnee["description"]);
+            $this->tNews[] = new News($donnee["idNews"],new DateTime($donnee["heure"]), $donnee["site"], $donnee["nom"], $donnee["description"],$donnee["categorie"],$donnee["image"]);
         }
         // Et on retourne tNews
         return $this->tNews;
@@ -61,7 +61,7 @@ class NewsGateway{
         }
     }
     
-    // fonction de suppréssion de news dans la BDD
+    // fonction de suppression de news dans la BDD
     public function sup($id){
         // Pour une news donnée grâce à $id on la supprime via une requète SQL
         $this->con->executeQuery('DELETE from TNews where idNews=:id',array(':id'=>array($id, PDO::PARAM_INT)));
@@ -69,9 +69,14 @@ class NewsGateway{
 
     public function add($news){
         // on prépare la commande sql d'insertion de news
-        $query = 'INSERT into Tnews (heure,site,nom,description) values(:date,:site,:nom,:description);';
+        $query = "INSERT into Tnews (STR_TO_DATE('heure','%a, %d %b %Y %T'),site,nom,description,categorie,image) values(:date,:site,:nom,:description,:categorie,:image);";
         // on insert les variables dedans
-        $this->con->executeQuery($query,array(':date'=>array($news->get_heure(), PDO::PARAM_INT),':site'=>array($news->get_site(), PDO::PARAM_INT),':nom'=>array($news->get_titre(), PDO::PARAM_INT),':description'=>array($news->get_description(), PDO::PARAM_INT)));
+        $this->con->executeQuery($query,array(':date'=>array($news->get_heure()->format("D, d M Y H:i:s"), PDO::PARAM_INT),':site'=>array($news->get_site(), PDO::PARAM_INT),':nom'=>array($news->get_titre(), PDO::PARAM_INT),':description'=>array($news->get_description(), PDO::PARAM_INT),':categorie'=>array($news->get_categorie(), PDO::PARAM_INT),':image'=>array($news->get_image(), PDO::PARAM_INT)));
+    }
+
+    public function findNewsbyId($id){
+        $this->con->executeQuery('SELECT count(*) nb from TNews where idNews=:id',array(':id'=>array($id, PDO::PARAM_INT)));
+        return $this->con->getResults()[0]["nb"];
     }
 }
 ?>
