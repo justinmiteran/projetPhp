@@ -2,6 +2,7 @@
 <html>
 	<head>
 		<title>News Page <?=$pageCourante?> </title>
+		<meta charset="UTF-8">
 		<link rel="stylesheet" href="vues/css/bootstrap.css" media="screen" type="text/css" />
 		<link rel="stylesheet" href="vues/css/styleNews.css" media="screen" type="text/css" />
 	</head>
@@ -34,9 +35,10 @@ foreach($Tnews as $news){
 	<!-- affichage d'une news -->
 	<div>
 		<p><?=$news->get_heure()->format("D d M Y -- H:i")?></p>
-		<a href="<?=$news->get_titre()?>"><?=$news->get_titre()?></a>
+		<img src="<?=$news->get_image()?>">
+		<a href="<?=$news->get_site()?>"><?=$news->get_titre()?></a>
 		<p><?=$news->get_description()?></p>
-		<p><?=$news->get_site()?></p>
+		<p><?=$news->get_categorie()?></p>
 		<p>-------------------------------------------</p>
 	</div>
 

@@ -19,13 +19,14 @@ Class News {
         $this->categorie=$categorie;
         $this->image=$image;
     }
-    
     // tostring de la news pour test
     function __tostring()
     {
         return "$this->id / "+$this->heure->format(DateTime::ISO8601)+" : $this->titre, $this->description par $this->site\n catégorie : $this->categorie\n image : $this->image";
     }
 
+    // setter des attributs d'une news
+    function set_categorie($categorie) {$this->categorie=$categorie;}
     // getter des attributs d'une news
     function get_id() {return $this->id;}
     function get_heure() {return $this->heure;}

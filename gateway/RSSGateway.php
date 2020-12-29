@@ -23,7 +23,7 @@ class RSSGateway{
         
         // Pour toutes les valeurs de $resultat on instancie les news dans le tableau $tNews
         foreach ($resultats as $donnee){
-            $this->tRSS[] = new RSS($donnee['nom'],$donnee['url']);
+            $this->tRSS[] = new RSS($donnee['idRSS'],$donnee['site'],$donnee['url'],$donnee['categorie']);
         }
         // On retourne le tableau
         return $this->tRSS;
@@ -32,13 +32,13 @@ class RSSGateway{
     // fonction de suppréssion de news dans la BDD
     public function supprimerRSS($id){
         // Pour une news donnée grâce à $id on la supprime via une requète SQL
-        $this->con->executeQuery('DELETE from TRSS where idNews=:id',array(':id'=>array($id, PDO::PARAM_INT)));
+        $this->con->executeQuery('DELETE from TRSS where idRSS=:id',array(':id'=>array($id, PDO::PARAM_INT)));
     }
     
     public function ajouterRSS($rss){
         // on prépare la commande sql d'insertion de news
-        $query = 'INSERT into TRSS (nom,url) values(:nom,:url);';
+        $query = 'INSERT into TRSS (site,url,categorie) values(:nom,:url,:categorie);';
         // on insert les variables dedans
-        $this->con->executeQuery($query,array(':nom'=>array($rss->get_nom(), PDO::PARAM_INT),':url'=>array($rss->get_url(), PDO::PARAM_INT)));
+        $this->con->executeQuery($query,array(':nom'=>array($rss->get_nom(), PDO::PARAM_INT),':url'=>array($rss->get_url(), PDO::PARAM_INT),':categorie'=>array($rss->get_categorie(), PDO::PARAM_INT)));
     }
 }
