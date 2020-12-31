@@ -62,7 +62,7 @@ class ControleurAdmin{
 	    }
     }
 
-<<<<<<< HEAD
+
     // function d'affiche de news par pages
     function afficherNews(){
         // déclaration variables globales
@@ -96,8 +96,6 @@ class ControleurAdmin{
         require($vues['vNews']);
     }
 
-=======
->>>>>>> 411fdcb22b1abb27ceea48595a3c0b6c90db787b
     function supprimerNews(){
         $mNews = new ModeleNews();
         $val = new Validation();
