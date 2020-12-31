@@ -11,8 +11,7 @@
   		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 	</head>
 	<body>
-		<div class="bordure">kfqsjfq</div>
-		<div class="container-fluid ban bordure">
+		<div class="container-fluid ban">
 			<div class="d-flex justify-content-between">
 				<div class="p-0">
 					<a href="index.php">
@@ -27,8 +26,8 @@
 							echo('
 							<div class="container">
 								<div class="dropdown">
-									<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-										<div class=\"cont\"><h2 class="nom">'.$nom.'</h2></div>
+									<button type="button" class="btn btn-primary dropdown-toggle menuDeroulant" data-toggle="dropdown">
+										<div class=\"cont\">'.$nom.'</div>
 									</button>
 									<div class="dropdown-menu">
 										<a class="dropdown-item" href="#">Ajout News</a>
