@@ -69,14 +69,26 @@ class NewsGateway{
 
     public function add($news){
         // on prépare la commande sql d'insertion de news
-        $query = "INSERT into Tnews (STR_TO_DATE('heure','%a, %d %b %Y %T'),site,nom,description,categorie,image) values(:date,:site,:nom,:description,:categorie,:image);";
+        $query = "INSERT into Tnews (heure,site,nom,description,categorie,image) values(STR_TO_DATE(:date,'%a, %d %b %Y %T'),:site,:nom,:description,:categorie,:image)";
         // on insert les variables dedans
-        $this->con->executeQuery($query,array(':date'=>array($news->get_heure()->format("D, d M Y H:i:s"), PDO::PARAM_INT),':site'=>array($news->get_site(), PDO::PARAM_INT),':nom'=>array($news->get_titre(), PDO::PARAM_INT),':description'=>array($news->get_description(), PDO::PARAM_INT),':categorie'=>array($news->get_categorie(), PDO::PARAM_INT),':image'=>array($news->get_image(), PDO::PARAM_INT)));
+        $this->con->executeQuery($query,array(':date'=>array($news->get_heure()->format("D, d M Y H:i:s"), PDO::PARAM_STR),':site'=>array($news->get_site(), PDO::PARAM_STR),':nom'=>array($news->get_titre(), PDO::PARAM_STR),':description'=>array($news->get_description(), PDO::PARAM_STR),':categorie'=>array($news->get_categorie(), PDO::PARAM_STR),':image'=>array($news->get_image(), PDO::PARAM_STR)));
     }
 
     public function findNewsbyId($id){
         $this->con->executeQuery('SELECT count(*) nb from TNews where idNews=:id',array(':id'=>array($id, PDO::PARAM_INT)));
         return $this->con->getResults()[0]["nb"];
     }
+
+    // fonction de suppression de news dans la BDD de plus d'un mois
+    public function netBase(){
+        // Pour une news donnée grâce à $id on la supprime via une requète SQL
+        $this->con->executeQuery('DELETE from TNews where DATEDIFF(heure, sysdate()) < -30',array());
+    }
+
+    public function findNews($site){
+        $this->con->executeQuery('SELECT count(*) nb from TNews where site=:site',array(':site'=>array($site, PDO::PARAM_STR)));
+        return $this->con->getResults()[0]["nb"];
+    }
+
 }
 ?>

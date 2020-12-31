@@ -4,32 +4,6 @@ Class ModeleAdmin {
     function __construct() {
     }
     
-    // fonction de récupération des news pour une page
-    function supprimerNews($idNews){
-        // initialisation de la class NewsGateway et de la classe Validation
-        $gate = new NewsGateway();       
-        // récupération des news
-        var_dump($gate->findNewsbyId($idNews));
-        if($gate->findNewsbyId($idNews)==0) throw new Exception("L'article à supprimer n'éxiste pas");
-        return $gate->sup($idNews);
-    }
-    
-    // fonction de récupération du nombre de pages
-    function ajouterNews($news){
-        // initialisation de la class NewsGateway et de la classe Validation
-        $gate = new NewsGateway();
-        // récupération du nombre max de pages
-        return $gate->add($news);
-    }
-    
-    function isAdmin(){
-        if(isset($_SESSION['role']) && isset($_SESSION['login'])){
-            if(Validation::string($_SESSION['role'])=='admin'){
-                return new Admin(Validation::string($_SESSION['login']));
-            }
-        }
-        return null;
-    }
     
     function connexion($login, $mdp){
         $login = Validation::string($login);
@@ -53,6 +27,16 @@ Class ModeleAdmin {
         session_unset();
         session_destroy();
         $_SESSION = array();
+    }
+
+        
+    function isAdmin(){
+        if(isset($_SESSION['role']) && isset($_SESSION['login'])){
+            if(Validation::string($_SESSION['role'])=='admin'){
+                return new Admin(Validation::string($_SESSION['login']));
+            }
+        }
+        return null;
     }
     
 }

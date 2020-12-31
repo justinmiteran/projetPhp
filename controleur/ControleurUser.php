@@ -108,7 +108,7 @@ class ControleurUser{
         $mdp=validation::string($_POST['mdp']);
         $reussi = $admin->connexion($login,$mdp);
         if($reussi){
-            $this->afficherNews();
+            header("Location: index.php"); 
         }
         else require($vues['vConnexion']);
     }

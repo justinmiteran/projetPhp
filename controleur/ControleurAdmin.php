@@ -19,19 +19,19 @@ class ControleurAdmin{
                 // si action null
                 case NULL:
                     //affiche la page de news
-					$this->afficherNews();
+                    header("Location: index.php?");
                     break;
                 
                 case "supprimerNews":
                     $this->supprimerNews();
-                    $this->afficherNews();
+                    header("Location: index.php?"); 
                     break;
                 case "ajouterNews":
                     $this->ajouterNews();
                     break;
                 case "validerAjoutNews":
                     $this->validerAjoutNews();
-                    $this->afficherNews();
+                    header("Location: index.php?");
                     break;
                 case "deconnexion":
                     $this->deconnexion();
@@ -62,6 +62,7 @@ class ControleurAdmin{
 	    }
     }
 
+<<<<<<< HEAD
     // function d'affiche de news par pages
     function afficherNews(){
         // déclaration variables globales
@@ -95,11 +96,13 @@ class ControleurAdmin{
         require($vues['vNews']);
     }
 
+=======
+>>>>>>> 411fdcb22b1abb27ceea48595a3c0b6c90db787b
     function supprimerNews(){
-        $admin = new ModeleAdmin();
+        $mNews = new ModeleNews();
         $val = new Validation();
         $idNews=$val->ValId($_GET['SupNews']);
-        $admin->supprimerNews($idNews);
+        $mNews->supprimerNews($idNews);
     }
 
     function ajouterNews(){
@@ -108,9 +111,12 @@ class ControleurAdmin{
     }
 
     function validerAjoutNews(){
-        $admin = new ModeleAdmin();
+        $mNews = new ModeleNews();
+        if(!isset($_POST['heure'])||!isset($_POST['site'])||!isset($_POST['titre'])||!isset($_POST['description'])||!isset($_POST['categorie'])||!isset($_POST['image']))
+            throw new Exception("Au moin un des paramêtres de création d'un article n'a pas été défini");
         $news=VALIDATION::ValNews(new News(0,$_POST['heure'],$_POST['site'],$_POST['titre'],$_POST['description'],$_POST['categorie'],$_POST['image']));
-        $admin->ajouterNews($news);
+        $mNews->ajouterNews($news);
+        header("Location: index.php"); 
     }
 
     function deconnexion(){
