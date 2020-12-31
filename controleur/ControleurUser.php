@@ -71,11 +71,17 @@ class ControleurUser{
         $Tnews=$news->getNewsPage($pageCourante,$this->nbNewsPage);
         // appeler la vue des News
 
+
         $admin = new ModeleAdmin();
-        if($admin->isAdmin()==null){
+        $nom = "";
+        if(($a=$admin->isAdmin())==null){
             $con = False;
         }
-        else $con = True;
+        else{
+            $con = True;
+            $nom = $a->get_nom();
+        }
+ 
         
         require($vues['vNews']);
     }

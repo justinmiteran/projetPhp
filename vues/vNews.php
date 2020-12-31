@@ -1,16 +1,21 @@
 <!-- en tête page html -->
 <html>
 	<head>
+		<meta charset="UTF-8">
 		<title>News Page <?=$pageCourante?> </title>
-		<link rel="stylesheet" href="css/bootstrap.css" media="screen" type="text/css" />
-		<link rel="stylesheet" href="css/styleNews.css" media="screen" type="text/css" />
+		<link rel="stylesheet" href="vues/css/bootstrap.css" media="screen" type="text/css" />
+		<link rel="stylesheet" href="vues/css/styleNews.css" media="screen" type="text/css" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 	</head>
 	<body>
-		<div class="container-fluid ban">
+		<div class="bordure">kfqsjfq</div>
+		<div class="container-fluid ban bordure">
 			<div class="d-flex justify-content-between">
 				<div class="p-0">
 					<a href="index.php">
-                        <img src="img/logo.png" class="img">
+                        <img src="vues/img/logo.png" class="img">
                     </a>
 				</div>
 				<div class="p-0">
@@ -19,17 +24,20 @@
 							echo('<button onclick="window.location.href = \'index.php?action=formulaireConnexion\';">Connexion</button>');
 						} else {
 							echo('
-								<nav>
-									<ul>
-										<li class="deroulant"><a class="deroulantBis" href="#">Menu</a>
-											<ul class="sous_deroulant">
-												<li><a class="bouton" href="#">Ajout News</a></li>
-												<li><a href="#">Flux RSS</a></li>
-												<li><a href="index.php?action=deconnexion">Déconnexion</a></li>
-											</ul>
-										</li>
-									</ul>
-								</nav>
+							<div class="container">
+								<div class="dropdown">
+									<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+										<div class=\"cont\"><h2 class="nom">'.$nom.'</h2></div>
+									</button>
+									<div class="dropdown-menu">
+										<a class="dropdown-item" href="#">Ajout News</a>
+										<a class="dropdown-item" href="#">Fluxs RSS</a>
+										
+										<div class="dropdown-divider"></div>
+										<a class="dropdown-item" href="index.php?action=deconnexion">Deconnexion</a>
+									</div>
+								</div>
+					  		</div>
 							');
 						}
 					?>
