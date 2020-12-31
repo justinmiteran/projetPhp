@@ -2,15 +2,15 @@
 <html>
 	<head>
 		<title>News Page <?=$pageCourante?> </title>
-		<link rel="stylesheet" href="vues/css/bootstrap.css" media="screen" type="text/css" />
-		<link rel="stylesheet" href="vues/css/styleNews.css" media="screen" type="text/css" />
+		<link rel="stylesheet" href="css/bootstrap.css" media="screen" type="text/css" />
+		<link rel="stylesheet" href="css/styleNews.css" media="screen" type="text/css" />
 	</head>
 	<body>
 		<div class="container-fluid ban">
 			<div class="d-flex justify-content-between">
 				<div class="p-0">
 					<a href="index.php">
-                        <img src="vues/img/logo.png" class="img">
+                        <img src="img/logo.png" class="img">
                     </a>
 				</div>
 				<div class="p-0">
@@ -18,7 +18,19 @@
 						if(isset($con) && $con == false){
 							echo('<button onclick="window.location.href = \'index.php?action=formulaireConnexion\';">Connexion</button>');
 						} else {
-							echo('<button onclick="window.location.href = \'index.php?action=deconnexion\';">Deconnexion</button>');
+							echo('
+								<nav>
+									<ul>
+										<li class="deroulant"><a class="deroulantBis" href="#">Menu</a>
+											<ul class="sous_deroulant">
+												<li><a class="bouton" href="#">Ajout News</a></li>
+												<li><a href="#">Flux RSS</a></li>
+												<li><a href="index.php?action=deconnexion">Déconnexion</a></li>
+											</ul>
+										</li>
+									</ul>
+								</nav>
+							');
 						}
 					?>
 				</div>
