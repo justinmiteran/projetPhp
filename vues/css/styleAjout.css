@@ -1,3 +1,7 @@
+.blanco{
+    background-color: white;
+}
+
 .ban{
     background-color: white;
     height: 80px;
@@ -17,14 +21,35 @@
     justify-content: center;
 }
 
-body{
-    background: #E5861B
+
+#container h1{
+    width: 38%;
+    margin: 0 auto;
+    padding-bottom: 10px;
 }
 
-#container{
-    width:400px;
-    margin:0 auto;
-    margin-top:10%;
+body{
+    background-color: #E5861B;
+}
+
+button{
+    background-color: #ff0000;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 15px;
+    border: 2px solid  #ff0000;
+    cursor: pointer;
+    width: 20%;
+}
+
+button:hover{
+    background-color: white;
+    color: #ff0000;
+    padding: 14px 20px;
+    margin: 8px 15px;
+    border: 2px solid #ff0000;
+    cursor: pointer;
+    width: 20%;
 }
 
 form {
@@ -34,28 +59,22 @@ form {
     background: #fff;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
-#container h1{
-    width: 38%;
-    margin: 0 auto;
-    padding-bottom: 10px;
-}
 
-/* Full-width inputs */
-input[type=text], input[type=password] {
+input[type=text], input[type=password], input[type=datetime-local], input[type=url],select, textarea{
     width: 100%;
     padding: 12px 20px;
-    margin: 8px 0;
+    margin: 8px 15px;
     display: inline-block;
     border: 1px solid #ccc;
     box-sizing: border-box;
 }
 
-/* Set a style for all buttons */
+
 input[type=submit] {
     background-color: #E5861B;
     color: white;
     padding: 14px 20px;
-    margin: 8px 0;
+    margin: 8px 15px;
     border: 2px solid  #E5861B;
     cursor: pointer;
     width: 20%;
@@ -65,4 +84,3 @@ input[type=submit]:hover {
     color: #53af57;
     border: 2px solid #53af57;
 }
-
