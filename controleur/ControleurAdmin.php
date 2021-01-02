@@ -24,7 +24,6 @@ class ControleurAdmin{
                 
                 case "supprimerNews":
                     $this->supprimerNews();
-                    header("Location: index.php?"); 
                     break;
                 case "ajouterNews":
                     $this->ajouterNews();
@@ -101,6 +100,9 @@ class ControleurAdmin{
         $val = new Validation();
         $idNews=$val->ValId($_GET['SupNews']);
         $mNews->supprimerNews($idNews);
+        if(isset($_GET['page'])) $page = $_GET['page'];
+        else $page = 1;
+        header("Location: index.php?page=$page"); 
     }
 
     function ajouterNews(){
@@ -109,10 +111,12 @@ class ControleurAdmin{
     }
 
     function validerAjoutNews(){
+        
         $mNews = new ModeleNews();
         if(!isset($_POST['heure'])||!isset($_POST['site'])||!isset($_POST['titre'])||!isset($_POST['description'])||!isset($_POST['categorie'])||!isset($_POST['image']))
             throw new Exception("Au moin un des paramêtres de création d'un article n'a pas été défini");
-        $news=VALIDATION::ValNews(new News(0,$_POST['heure'],$_POST['site'],$_POST['titre'],$_POST['description'],$_POST['categorie'],$_POST['image']));
+        $heure = DateTime::createFromFormat("Y-m-d\TH:i",$_POST['heure']);
+        $news=VALIDATION::ValNews(new News(0,$heure,$_POST['site'],$_POST['titre'],$_POST['description'],$_POST['categorie'],$_POST['image']));
         $mNews->ajouterNews($news);
         header("Location: index.php"); 
     }
