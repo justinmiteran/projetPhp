@@ -30,6 +30,7 @@
 									</button>
 									<div class="dropdown-menu">
 										<a class="dropdown-item" href="index.php?action=ajouterNews">Ajout News</a>
+										<a class="dropdown-item" href="index.php?action=ajouterRss">Ajout RSS</a>
 										<a class="dropdown-item" href="#">Fluxs RSS</a>
 										
 										<div class="dropdown-divider"></div>

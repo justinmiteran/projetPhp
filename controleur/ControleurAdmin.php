@@ -35,6 +35,7 @@ class ControleurAdmin{
                 case "deconnexion":
                     $this->deconnexion();
                     break;
+                
 				//sinon
                 default:
                     // ajout d'une erreur
