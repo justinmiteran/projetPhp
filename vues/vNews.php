@@ -48,6 +48,20 @@
 
         </div>
 		<?php
+			if(isset($con) && $con == true){
+				echo('
+					<div class="container-fluid">
+						<div class="container blanco page">
+							<form class="cont" action=\'index.php?action=validerAjoutRss\' method=\'post\'>
+								<input type="tel" placeholder="Nb pages :" name="nbPages">
+								<input type="submit" id=\'submit\' value=\'Valider\'>
+							</form>						
+						</div>
+					</div>
+				');
+			}
+		?>
+		<?php
 		// boucle for pour afficher les news
 		foreach($Tnews as $news){
 		?>

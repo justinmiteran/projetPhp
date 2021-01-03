@@ -88,6 +88,10 @@
     font-size: 1.2em;
 }
 
+.page{
+    padding: 10px;
+}
+
 body{
     background-color: #E5861B;
 }
