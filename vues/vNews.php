@@ -64,10 +64,12 @@
 				} else {
 					echo('
 					<div class="row justify-content-end">
-						<div class="cont col-4">
+						<div class="cont col">
+						</div>
+						<div class="cont col-6">
 							<p class="titre">'.$news->get_categorie().'</p>
 						</div>
-						<div class="col-4">
+						<div class="col supp2">
 							<a href="index.php?action=supprimerNews&SupNews='.$news->get_id().'&page='.$pageCourante.'">
 								<img class="supp" src="vues/img/supp.png">
 							</a>
