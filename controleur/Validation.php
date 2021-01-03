@@ -34,6 +34,13 @@ class Validation
 		return $news;
 	}
 	
+	public static function ValRss($rss){
+		if(!filter_var($rss->get_url(),FILTER_VALIDATE_URL)) throw new Exception("Le lien \""+$rss->get_url()+"\" du flux à ajouter est invalide, risque de sécurité");
+		if(filter_var($rss->get_site(),FILTER_SANITIZE_STRING)!=$rss->get_site()) throw new Exception("Le site \""+$rss->get_site()+"\" du flux à ajouter est invalide, risque de sécurité");
+		if(filter_var($rss->get_categorie(),FILTER_SANITIZE_STRING)!=$rss->get_categorie()) throw new Exception("La categorie \""+$rss->get_categorie()+"\" du flux à ajouter est invalide, risque de sécurité");
+		return $rss;
+	}
+
 	public static function string($string){
 		if ($string=="") {
 			throw new Exception("La chaîne de caractère \"$string\" ne peut être vide");
@@ -53,7 +60,7 @@ class Validation
 		}
 		// netoyage et validation du site
 		if (!isset($item->link)) throw new Exception("L'item du flux RSS n'a pas de lien");
-		elseif(!filter_var($item->link,FILTER_VALIDATE_URL)) throw new Exception("L'item du flux RSS a un lien invalide, risque de sécurité");
+		elseif(!filter_var($item->link,FILTER_VALIDATE_URL)) throw new Exception("L'item \"$item->link\" du flux RSS a un lien invalide, risque de sécurité");
 		$site = $item->link;
 		// netoyage et validation du titre
 		if (!isset($item->title)) throw new Exception("L'item du flux RSS n'a pas de titre");

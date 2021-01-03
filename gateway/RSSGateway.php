@@ -39,6 +39,6 @@ class RSSGateway{
         // on prépare la commande sql d'insertion de news
         $query = 'INSERT into TRSS (site,url,categorie) values(:nom,:url,:categorie);';
         // on insert les variables dedans
-        $this->con->executeQuery($query,array(':nom'=>array($rss->get_nom(), PDO::PARAM_INT),':url'=>array($rss->get_url(), PDO::PARAM_INT),':categorie'=>array($rss->get_categorie(), PDO::PARAM_INT)));
+        $this->con->executeQuery($query,array(':nom'=>array($rss->get_site(), PDO::PARAM_STR),':url'=>array($rss->get_url(), PDO::PARAM_STR),':categorie'=>array($rss->get_categorie(), PDO::PARAM_STR)));
     }
 }

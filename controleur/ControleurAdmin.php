@@ -32,6 +32,13 @@ class ControleurAdmin{
                     $this->validerAjoutNews();
                     header("Location: index.php?");
                     break;
+                case "ajouterRss":
+                    $this->ajouterRss();
+                    break;
+                case "validerAjoutRss":
+                    $this->validerAjoutRss();
+                    header("Location: index.php?");
+                    break;
                 case "deconnexion":
                     $this->deconnexion();
                     break;
@@ -109,6 +116,21 @@ class ControleurAdmin{
     function ajouterNews(){
         global $vues;
         require($vues['vAjoutNews']);
+    }
+
+    function ajouterRss(){
+        global $vues;
+        require($vues['vAjoutFlux']);
+    }
+
+    function validerAjoutRss(){
+        
+        $mRss = new ModeleRss();
+        if(!isset($_POST['site'])||!isset($_POST['url'])||!isset($_POST['cat']))
+            throw new Exception("Au moin un des paramêtres de création d'un flux rss n'a pas été défini");
+        $rss=VALIDATION::ValRss(new RSS(0,$_POST['site'],$_POST['url'],$_POST['cat']));
+        $mRss->addRss($rss);
+        header("Location: index.php"); 
     }
 
     function validerAjoutNews(){

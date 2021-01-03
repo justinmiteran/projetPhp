@@ -12,6 +12,7 @@ $vues['vNews']='vues/vNews.php';
 $vues['vConnexion']='vues/vConnexion.html';
 $vues['vDeconnexion']='vues/vDeconnexion.php';
 $vues['vAjoutNews']='vues/vAjout.php';
+$vues['vAjoutFlux']='vues/vAjoutFlux.php';
 
 //Controllers
 $cont['controleurUser']='controleur/ControleurUser.php';
