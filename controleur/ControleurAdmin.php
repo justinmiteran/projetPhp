@@ -3,11 +3,14 @@
 class ControleurAdmin{
     
     //variable du nombre de news par page
-    protected $nbNewsPage = 2;
+    protected $nbNewsPage = 10;
     protected $tErreur = array ();
 
     function __construct() {		
         global $vues;
+        if(isset($_SESSION['nbPages'])){
+            $this->nbNewsPage = Validation::num($_SESSION['nbPages']);
+        }
 		//on initialise un tableau d'erreur
         $TErreur = array ();
         
@@ -48,6 +51,9 @@ class ControleurAdmin{
                 case "supprimerRss":
                     $this->supprimerRss();
                     break;
+                case "validerNbPages":
+                    $this->validerNbPages();
+                    break;
 				//sinon
                 default:
                     // ajout d'une erreur
@@ -74,38 +80,11 @@ class ControleurAdmin{
 	    }
     }
 
-
-    // function d'affiche de news par pages
-    function afficherNews(){
-        // déclaration variables globales
-        global $vues,$cont;
-        // déclaration constructeurs 
-        $news = new ModeleNews();
-        $val = new Validation();
-
-        // récupération de nombre de pages
-        $pageMax = $news->getNbPages($this->nbNewsPage);
-
-        // si une page est passé dans l'url vérifier sa valeur
-        if(isset($_GET['page'])) $pageCourante = $val->valPage($_GET['page'],$pageMax);
-        // sinon définir la page courante a 1
-        else $pageCourante=1;
-
-        // récupération d'un tableau de news
-        $Tnews=$news->getNewsPage($pageCourante,$this->nbNewsPage);
-        // appeler la vue des News
-
-        $admin = new ModeleAdmin();
-        $nom = "";
-        if(($a=$admin->isAdmin())==null){
-            $con = False;
-        }
-        else{
-            $con = True;
-            $nom = $a->get_nom();
-        } 
-        
-        require($vues['vNews']);
+    function validerNbPages(){
+        $nbPages = Validation::num($_POST['nbPages']);
+        $_SESSION['nbPages']=$nbPages;
+        var_dump($_SESSION);
+        header("Location: index.php"); 
     }
 
     function afficherRss(){
@@ -152,6 +131,8 @@ class ControleurAdmin{
 
     function ajouterNews(){
         global $vues;
+        $mNews = new ModeleNews();
+        $tCat = $mNews->listecat();
         require($vues['vAjoutNews']);
     }
 

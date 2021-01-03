@@ -92,4 +92,11 @@ class Validation
 		return new News(0,$heure,$site,$titre,$description,"",$image);
 		
 	}
+
+	public static function num($num){
+		if(!isset($num)) return 10;
+		if(!filter_var($num, FILTER_VALIDATE_INT)) return 10;
+		if($num<0) return 10;
+		return $num;
+	}
 }

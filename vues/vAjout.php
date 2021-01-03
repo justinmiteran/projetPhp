@@ -30,10 +30,11 @@
                             <input type="datetime-local" placeholder="Date :" name="heure" required>
                             <label><b>Catégorie : </b></label><br \>
                             <select name="categorie" id="categorie">
-                                <option value="politique">Politique</option>
-                                <option value="jeux-video">Jeux-video</option>
-                                <option value="sante">Santé</option>
-                                <option value="economie">Economie</option>
+                                <?php
+                                    foreach($tCat as $cat){
+                                        echo('<option value="'.$cat.'">'.$cat.'</option>');
+                                    }
+                                ?>
                             </select>
                             <label><b>Déscription : </b></label><br \>
                             <textarea name="description" id="description" rows="7" placeholder="Déscription :"></textarea>

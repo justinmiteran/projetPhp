@@ -3,11 +3,14 @@
 class ControleurUser{
     
     //variable du nombre de news par page
-    protected $nbNewsPage = 2;
+    protected $nbNewsPage = 10;
     protected $tErreur = array ();
 
     function __construct() {		
         global $vues;
+        if(isset($_SESSION['nbPages'])){
+            $this->nbNewsPage = Validation::num($_SESSION['nbPages']);
+        }
 		//on initialise un tableau d'erreur
         $TErreur = array ();
         
@@ -60,7 +63,11 @@ class ControleurUser{
         $val = new Validation();
 
         // récupération de nombre de pages
-        $pageMax = $news->getNbPages($this->nbNewsPage);
+        if(isset($_GET['cat'])){
+            $cat=$val->string($_GET['cat']);
+            $pageMax = $news->getNbPagesCat($this->nbNewsPage,$cat);
+        }
+        else $pageMax = $news->getNbPages($this->nbNewsPage);
 
         // si une page est passé dans l'url vérifier sa valeur
         if(isset($_GET['page'])) $pageCourante = $val->valPage($_GET['page'],$pageMax);
@@ -68,9 +75,14 @@ class ControleurUser{
         else $pageCourante=1;
 
         // récupération d'un tableau de news
-        $Tnews=$news->getNewsPage($pageCourante,$this->nbNewsPage);
+        if(isset($_GET['cat'])){
+            $cat=$val->string($_GET['cat']);
+            $Tnews=$news->getNewsPageCat($pageCourante,$this->nbNewsPage,$cat);
+        }
+        else $Tnews=$news->getNewsPage($pageCourante,$this->nbNewsPage);
         // appeler la vue des News
 
+        $tCat = $news->listecat();
 
         $admin = new ModeleAdmin();
         $nom = "";

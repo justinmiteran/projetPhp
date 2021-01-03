@@ -47,12 +47,39 @@ class NewsGateway{
         // Et on retourne tNews
         return $this->tNews;
     }
-    
+
+    public function donnerLesNewsPageCat($numPage,$newsPage,$cat){
+        // On prépart la commande SQL qui va nous donner les news de la page trié pat heure et description
+        $query = "SELECT * from TNews where categorie=:cat order by heure desc limit :nbNews offset :debut";
+        // :debut -> à partir de quelle news on commence pour récupérer les bonnes news de la page dans la BDD
+        $this->con->executeQuery($query,array(':cat'=>array($cat, PDO::PARAM_STR),':nbNews'=>array($newsPage, PDO::PARAM_INT),':debut'=>array(($numPage-1)*$newsPage, PDO::PARAM_INT)));
+        
+        // On récupère les résultats dans le tableau résultat
+        $resultats = $this->con->getResults();
+        
+        // Pour chaques résultats on instancie la news dans tNews
+        foreach ($resultats as $donnee){
+            $this->tNews[] = new News($donnee["idNews"],new DateTime($donnee["heure"]), $donnee["site"], $donnee["nom"], $donnee["description"],$donnee["categorie"],$donnee["image"]);
+        }
+        // Et on retourne tNews
+        return $this->tNews;
+    }
     
     // Retourne le nombre de news dans la BDD 
     public function nb(){
         // récupère dans la variable NB le nombre de news
         $this->con->executeQuery('SELECT count(*) NB from TNews',array());
+        // On récupère le résultat dans  $nb
+        $nb = $this->con->getResults();
+        // On retourne le nombre de news
+        foreach ($nb as $donnee){
+            return $donnee["NB"]; 
+        }
+    }
+
+    public function nbCat($cat){
+        // récupère dans la variable NB le nombre de news
+        $this->con->executeQuery('SELECT count(*) NB from TNews where categorie=:cat',array(':cat'=>array($cat, PDO::PARAM_STR)));
         // On récupère le résultat dans  $nb
         $nb = $this->con->getResults();
         // On retourne le nombre de news
@@ -90,5 +117,18 @@ class NewsGateway{
         return $this->con->getResults()[0]["nb"];
     }
 
+    public function findCat(){
+        $tCat=[];
+        $this->con->executeQuery('SELECT categorie from TNews group by categorie',array());
+        
+        $resultats = $this->con->getResults();
+        
+        // Pour toutes les valeurs de $resultat on instancie les news dans le tableau $tNews
+        foreach ($resultats as $donnee){
+            $tCat[] = $donnee['categorie'];
+        }
+        // On retourne le tableau
+        return $tCat;
+    }
 }
 ?>

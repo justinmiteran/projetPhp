@@ -12,12 +12,27 @@ Class ModeleNews {
         return $gate->donnerLesNewsPage($page,$nbNewsPage);
     }
 
+    function getNewsPageCat($page,$nbNewsPage,$cat){
+        // initialisation de la class NewsGateway et de la classe Validation
+        $gate = new NewsGateway();       
+        // récupération des news
+        return $gate->donnerLesNewsPageCat($page,$nbNewsPage,$cat);
+    }
+
     // fonction de récupération du nombre de pages
     function getNbPages($nbNewsPage){
         // initialisation de la class NewsGateway et de la classe Validation
         $gate = new NewsGateway;
         // récupération du nombre max de pages
         return ceil($gate->nb()/$nbNewsPage);
+    }
+
+    //
+    function getNbPagesCat($nbNewsPage,$cat){
+        // initialisation de la class NewsGateway et de la classe Validation
+        $gate = new NewsGateway;
+        // récupération du nombre max de pages
+        return ceil($gate->nbCat($cat)/$nbNewsPage);
     }
 
     // fonction de récupération des news pour une page
@@ -49,6 +64,12 @@ Class ModeleNews {
         $gate = new NewsGateway();
         // netoyage de la base
         return $gate->findNews($site);
+    }
+
+    function listecat(){
+        $gate = new NewsGateway();
+
+        return $gate->findCat();
     }
 
 }
