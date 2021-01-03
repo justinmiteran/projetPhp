@@ -42,7 +42,12 @@ class ControleurAdmin{
                 case "deconnexion":
                     $this->deconnexion();
                     break;
-                
+                case "afficherRss":
+                    $this->afficherRss();
+                    break;
+                case "supprimerRss":
+                    $this->supprimerRss();
+                    break;
 				//sinon
                 default:
                     // ajout d'une erreur
@@ -103,6 +108,30 @@ class ControleurAdmin{
         require($vues['vNews']);
     }
 
+    function afficherRss(){
+        // déclaration variables globales
+        global $vues,$cont;
+        // déclaration constructeurs 
+        $rss = new ModeleRss();
+        $val = new Validation();
+
+        // récupération d'un tableau des flux rss
+        $Trss=$rss-> getRSS();
+        // appeler la vue des News
+
+        $admin = new ModeleAdmin();
+        $nom = "";
+        if(($a=$admin->isAdmin())==null){
+            $con = False;
+        }
+        else{
+            $con = True;
+            $nom = $a->get_nom();
+        } 
+        
+        require($vues['vListeFlux']);
+    }
+
     function supprimerNews(){
         $mNews = new ModeleNews();
         $val = new Validation();
@@ -111,6 +140,14 @@ class ControleurAdmin{
         if(isset($_GET['page'])) $page = $_GET['page'];
         else $page = 1;
         header("Location: index.php?page=$page"); 
+    }
+
+    function supprimerRss(){
+        $mRss = new ModeleRss();
+        $val = new Validation();
+        $idRss=$val->ValId($_GET['SupRss']);
+        $mRss->supRSS($idRss);
+        header("Location: index.php?action=afficherRss"); 
     }
 
     function ajouterNews(){

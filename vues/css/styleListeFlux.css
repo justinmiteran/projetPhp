@@ -1,0 +1,103 @@
+.nom{
+    width: auto;
+}
+.menuDeroulant{
+    width: 100px;
+    background-color:#E5861B;
+    border-color: #E5861B;
+}
+
+.menuDeroulant:hover{
+    background-color:#f1b56f;
+    border-color: #E5861B;
+}
+
+.bordure{
+    margin: 10px;
+    border: 2px solid;
+}
+
+.blanco{
+    background-color: white;
+}
+
+.ban{
+    background-color: white;
+    height: 80px;
+}
+
+.ecart{
+    height: 20px;
+}
+
+.img{
+    height: 80px;
+}
+
+.cont{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.droit{
+    align-items: right;
+}
+
+.bord{
+    border:1px dotted black;
+}
+
+.image{
+    width: 100%;
+}
+
+.titre{
+    font-weight: bold;
+    font-size: 1.6em;
+}
+
+.lien{
+    color: #E5861B;
+    text-decoration: none;
+    font-size: 1.4em;
+}
+
+.par{
+    font-size: 1.2em;
+}
+
+.supp{
+    width : 30px;
+    height :auto;
+}
+
+.supp2{
+    text-align: end;
+    padding: 0 40px;
+}
+
+.fin{
+    background-color: white;
+    height: 40px;
+}
+
+.menu{
+    color: black;
+    text-decoration: none;
+    font-size: 1.2em;
+}
+
+body{
+    background-color: #E5861B;
+}
+
+button{
+    background-color: white;
+    color: black;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 20%;
+}

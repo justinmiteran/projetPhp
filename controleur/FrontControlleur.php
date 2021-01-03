@@ -6,7 +6,7 @@ class FrontControlleur{
         global $vues;
         //on initialise un tableau d'erreur
         $TErreur = array ();
-        $listeAction_Admin= array('deconnexion','supprimerNews','ajouterNews','validerAjoutNews','ajouterRss','validerAjoutRss');
+        $listeAction_Admin= array('deconnexion','supprimerNews','ajouterNews','validerAjoutNews','ajouterRss','validerAjoutRss','afficherRss','supprimerRss');
         session_start();
         //appel modèle admin pour vérifier si utilisateur est connecté
         Try{
