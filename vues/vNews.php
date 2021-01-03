@@ -48,6 +48,7 @@
 
 		</div>
 		
+		<div class="container-fluid">
 		<div class="container blanco">
 			<div class="dropdown">
 				<button type="button" class="btn btn-primary dropdown-toggle menuDeroulant" data-toggle="dropdown">
@@ -76,6 +77,7 @@
 				');
 			}
 		?>
+		</div>
 		<?php
 		// boucle for pour afficher les news
 		foreach($Tnews as $news){
