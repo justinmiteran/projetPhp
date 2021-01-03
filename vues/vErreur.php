@@ -1,3 +1,4 @@
+<!-- Vue d'erreurs -->
 <html>
     <head>
         <meta charset="utf-8">
@@ -24,6 +25,7 @@
                     <article class="col-md-12">
                         <div class="cont"><h1>Oups!</h1></div>
                         <div>
+                            <!-- Affiche l'intégralité du tableau d'erreurs -->
                             <?php
                                 foreach($TErreur as $val){
                                     echo("<p>$val</p>");

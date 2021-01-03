@@ -1,4 +1,6 @@
+<!-- Formulaire ajout news -->
 <html>
+    
     <head>
         <meta charset="utf-8">
 		<title>Ajout News</title>
@@ -30,6 +32,7 @@
                             <input type="datetime-local" placeholder="Date :" name="heure" required>
                             <label><b>Catégorie : </b></label><br \>
                             <select name="categorie" id="categorie">
+                                <!-- Choix des catégories propose chaques catégories -->
                                 <?php
                                     foreach($tCat as $cat){
                                         echo('<option value="'.$cat.'">'.$cat.'</option>');

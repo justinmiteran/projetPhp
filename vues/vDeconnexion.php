@@ -1,3 +1,4 @@
+<!-- Page de deconnexion -->
 <html>
     <head>
         <meta charset="utf-8">
@@ -23,6 +24,7 @@
                 <div class="row">
                     <article class="col-md-12">
                         <div class="cont"><h1>Au revoir </h1></div>
+                        <!-- Affiche le nom de la personne qui se deconnecte -->
                         <?php
                             echo("<div class=\"cont\"><h2 class='nom'>$nom</h2></div>");
                         ?>

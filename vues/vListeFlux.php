@@ -1,3 +1,4 @@
+<!-- Affiche la liste des flux  RSS -->
 <html>
 	<head>
 		<meta charset="utf-8">
@@ -49,10 +50,10 @@
         <div class="container-fluid">
 			<div class="container blanco">
                 <?php
-                // boucle for pour afficher les news
+                // boucle for pour afficher les flux RSS
                 foreach($Trss as $rss){
                 ?>
-                <!-- affichage d'une news -->
+                <!-- affichage dun flux RSS -->
 		
 				
 				<?php

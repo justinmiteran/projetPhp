@@ -1,4 +1,4 @@
-<!-- en tête page html -->
+<!-- Page d'affichage des news -->
 <html>
 	<head>
 		<meta charset="utf-8">
@@ -19,9 +19,10 @@
 				</div>
 				<div class="p-0 cont">
 					<?php
+						// Si non-connecté alors il affiche le bouton de connexion
 						if(isset($con) && $con == false){
 							echo('<button class="btn btn-primary menuDeroulant" onclick="window.location.href = \'index.php?action=formulaireConnexion\';">Connexion</button>');
-						} else {
+						} else { // Sinon un bouton déroulant s'affiche avec le nom de la personne connécté
 							echo('
 							<div class="container">
 								<div class="dropdown">
@@ -47,7 +48,7 @@
 		<div class="container-fluid ecart">  
 
 		</div>
-		
+		<!-- Choix de la catégorie de news -->
 		<div class="container-fluid">
 		<div class="container blanco">
 			<div class="dropdown">
@@ -64,6 +65,7 @@
 			</div>
 		</div>
 		<?php
+			// Si un admin est connécté alors il peut choisir le nombre de news par pages
 			if(isset($con) && $con == true){
 				echo('
 					<div class="container-fluid">
@@ -122,6 +124,7 @@
 		<?php
 		}
 		?>
+		<!-- Navigation entre toutes les pages -->
 		<div class="container-fluid fin">
 			<div class="container cont">
 			<?php
