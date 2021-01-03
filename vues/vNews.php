@@ -130,8 +130,8 @@
 			<?php
 			// si la page courante est superieur a la page 1
 			$aCat = "";
-			if(isset($cat)){
-				$aCat = "&cat=".$cat;
+			if(isset($_GET['cat'])){
+				$aCat = "&cat=".$_GET['cat'];
 			}
 			if($pageCourante > 1){
 				// affiche le lien vers la page précédente et la première page
