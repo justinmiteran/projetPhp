@@ -8,7 +8,9 @@ class ControleurUser{
 
     function __construct() {		
         global $vues;
+        // test si le nb de news par page est en session
         if(isset($_SESSION['nbPages'])){
+            // validation
             $this->nbNewsPage = Validation::num($_SESSION['nbPages']);
         }
 		//on initialise un tableau d'erreur
@@ -82,10 +84,14 @@ class ControleurUser{
         else $Tnews=$news->getNewsPage($pageCourante,$this->nbNewsPage);
         // appeler la vue des News
 
+        // liste des categories
         $tCat = $news->listecat();
 
+        // declaration modele admin
         $admin = new ModeleAdmin();
+        // initialisation du nom
         $nom = "";
+        // test admin
         if(($a=$admin->isAdmin())==null){
             $con = False;
         }
@@ -94,34 +100,46 @@ class ControleurUser{
             $nom = $a->get_nom();
         }
  
-        
+        // appel de la vue des news
         require($vues['vNews']);
     }
 
+    // formulaire connexion
     function afficherConnexion(){
         global $vues;
-        // appeler la vue des News
+        // declaration modele
         $admin = new ModeleAdmin();
+        // test pas admin
         if($admin->isAdmin()==null){
+            // appel de la vue de connexion
             require($vues['vConnexion']);
         }
+        // afficher la page principale
         else $this->afficherNews();
     }
 
+    // validation de la connexion
     function connexion(){
         global $vues;
         // appeler la vue des News
         $admin = new ModeleAdmin();
+        // test si le login et mot de passe n'éxiste pas
         if(!isset($_POST['login']) || !isset($_POST['mdp'])){
+            //appelle la vue de connexion
             $this->afficherConnexion();
             return;
         }
+        // validation des variables
         $login=validation::string($_POST['login']);
         $mdp=validation::string($_POST['mdp']);
+        // connexion
         $reussi = $admin->connexion($login,$mdp);
+        // test de reussite de connexion
         if($reussi){
+            // appel de la vue principale
             header("Location: index.php"); 
         }
+        // appel vue connexion
         else require($vues['vConnexion']);
     }
 }

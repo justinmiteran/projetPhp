@@ -1,5 +1,6 @@
 <?php
 
+// creation d'un mot de pass
 echo password_hash("justin", PASSWORD_DEFAULT);
 
 //justin

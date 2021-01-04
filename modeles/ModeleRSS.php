@@ -4,26 +4,27 @@ Class ModeleRSS {
     function __construct() {
     }
 
-    // fonction de récupération des news pour une page
+    // fonction de récupération des RSS
     function getRSS(){
-        // initialisation de la class NewsGateway et de la classe Validation
+        // initialisation de la class RSSGateway
         $gate = new RSSGateway();       
-        // récupération des news
+        // récupération des flux RSS
         return $gate->donnerLesRSS();
     }
 
-    // fonction de récupération du nombre de pages
+    // fonction ajout RSS
     function addRSS($rss){
-        // initialisation de la class NewsGateway et de la classe Validation
+        // initialisation de la class RSSGateway
         $gate = new RSSGateway;
-        // récupération du nombre max de pages
+        // ajout flux
         return  $gate->ajouterRSS($rss);
     }
 
+    // suppresion RSS
     function supRSS($idRSS){
-        // initialisation de la class NewsGateway et de la classe Validation
+        // initialisation de la class RSSGateway
         $gate = new RSSGateway;
-        // récupération du nombre max de pages
+        // suppression flux
         return $gate->supprimerRSS($idRSS);
     }
 }
