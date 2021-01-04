@@ -102,6 +102,7 @@ class NewsGateway{
         $this->con->executeQuery($query,array(':date'=>array($news->get_heure()->format("D, d M Y H:i:s"), PDO::PARAM_STR),':site'=>array($news->get_site(), PDO::PARAM_STR),':nom'=>array($news->get_titre(), PDO::PARAM_STR),':description'=>array($news->get_description(), PDO::PARAM_STR),':categorie'=>array($news->get_categorie(), PDO::PARAM_STR),':image'=>array($news->get_image(), PDO::PARAM_STR)));
     }
 
+    // fonction qui retourne le nombre de news qui ont le même id que passé en paramètre
     public function findNewsbyId($id){
         $this->con->executeQuery('SELECT count(*) nb from TNews where idNews=:id',array(':id'=>array($id, PDO::PARAM_INT)));
         return $this->con->getResults()[0]["nb"];
@@ -113,11 +114,13 @@ class NewsGateway{
         $this->con->executeQuery('DELETE from TNews where DATEDIFF(heure, sysdate()) < -30',array());
     }
 
+    // fonction qui retourne le nombre de news qui ont le même site que passé en paramètre
     public function findNews($site){
         $this->con->executeQuery('SELECT count(*) nb from TNews where site=:site',array(':site'=>array($site, PDO::PARAM_STR)));
         return $this->con->getResults()[0]["nb"];
     }
 
+    // fonction qui retourne la liste des catégories
     public function findCat(){
         $tCat=[];
         $this->con->executeQuery('SELECT categorie from TNews group by categorie',array());
