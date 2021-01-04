@@ -12,6 +12,7 @@ class AdminGateway{
         $this->con=new Connection($base,$login,$mdp);
     }
     
+    // Retourne le Hash du mdp de l'admin passé en paramètre
     public function getMdp($loginAdmin){
         
         $this->con->executeQuery("SELECT hashMdp from tconnexion where pseudo=:login",array(':login'=>array($loginAdmin, PDO::PARAM_STR)));

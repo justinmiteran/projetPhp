@@ -35,6 +35,7 @@ class RSSGateway{
         $this->con->executeQuery('DELETE from TRSS where idRSS=:id',array(':id'=>array($id, PDO::PARAM_INT)));
     }
     
+    // fonction qui ajoute le flux rss passé en paramètre à la base de donnée
     public function ajouterRSS($rss){
         // on prépare la commande sql d'insertion de news
         $query = 'INSERT into TRSS (site,url,categorie) values(:nom,:url,:categorie);';

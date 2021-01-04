@@ -78,6 +78,7 @@ class NewsGateway{
         }
     }
 
+    // fonction qui retourne le nombre de news par catégorie
     public function nbCat($cat){
         // récupère dans la variable NB le nombre de news
         $this->con->executeQuery('SELECT count(*) NB from TNews where categorie=:cat',array(':cat'=>array($cat, PDO::PARAM_STR)));
@@ -95,6 +96,7 @@ class NewsGateway{
         $this->con->executeQuery('DELETE from TNews where idNews=:id',array(':id'=>array($id, PDO::PARAM_INT)));
     }
 
+    // fonction qui ajoute la news passé en paramètre dans la base de donnée
     public function add($news){
         // on prépare la commande sql d'insertion de news
         $query = "INSERT into Tnews (heure,site,nom,description,categorie,image) values(STR_TO_DATE(:date,'%a, %d %b %Y %T'),:site,:nom,:description,:categorie,:image)";
