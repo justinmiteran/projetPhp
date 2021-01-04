@@ -48,6 +48,7 @@ class NewsGateway{
         return $this->tNews;
     }
 
+    // donne les news d'une page avec catégorie
     public function donnerLesNewsPageCat($numPage,$newsPage,$cat){
         // On prépart la commande SQL qui va nous donner les news de la page trié pat heure et description
         $query = "SELECT * from TNews where categorie=:cat order by heure desc limit :nbNews offset :debut";

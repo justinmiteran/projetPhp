@@ -1,0 +1,60 @@
+C:.
+│   index.php    		Justin
+│   mdp.php			Justin
+│
+├───config
+│       Autoload.php		Cours
+│       config.php		Justin
+│
+├───controleur
+│       Connection.php		Cours
+│       ControleurAdmin.php	Justin / Sebastien
+│       ControleurUser.php	Justin
+│       FrontControlleur.php	Justin
+│       Validation.php		Justin
+│
+├───gateway
+│       AdminGateway.php	Sebastien
+│       NewsGateway.php		Sebastien / Justin
+│       RSSGateway.php		Sebastien
+│
+├───modeles
+│   │   ModeleAdmin.php		Justin
+│   │   ModeleNews.php		Justin
+│   │   ModeleRSS.php		Justin
+│   │
+│   └───metier
+│           Admin.php		Justin
+│           News.php		Justin
+│           RSS.php		Justin
+│
+├───ParserXML
+│   │   index.php		Justin
+│   │
+│   └───config
+│           Autoload.php	Cours
+│           config.php		Justin
+│
+└───vues
+    │   vAjout.php		Sebastien
+    │   vAjoutFlux.php		Sebastien
+    │   vConnexion.html		Sebastien
+    │   vDeconnexion.php	Sebastien
+    │   vErreur.php		Sebastien
+    │   vListeFlux.php		Sebastien
+    │   vNews.php		Sebastien / Justin
+    │
+    ├───css
+    │       bootstrap.css	Sebastien
+    │       styleAjout.css	Sebastien
+    │       styleAjoutFlux.css	Sebastien
+    │       styleConnexion.css	Sebastien
+    │       styleDeconnexion.cssSebastien
+    │       styleErreur.css	Sebastien
+    │       styleListeFlux.css	Sebastien
+    │       styleNews.css	Sebastien
+    │
+    └───img
+            bey.png		Sebastien
+            logo.png		Sebastien
+            supp.png		Sebastien

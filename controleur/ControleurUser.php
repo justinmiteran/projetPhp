@@ -57,7 +57,7 @@ class ControleurUser{
     // function d'affiche de news par pages
     function afficherNews(){
         // déclaration variables globales
-        global $vues,$cont;
+        global $vues;
         // déclaration constructeurs 
         $news = new ModeleNews();
         $val = new Validation();
